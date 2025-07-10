@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pramod's Portfolio - Projects</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+
+            <div class="project-card">
+                <img src="crypto_forecast.png" alt="Screenshot of cryptocurrency forecasting dashboard" class="project-thumbnail">
+                <h3>📈 Prophet Forecasting: Cryptocurrency Market</h3>
+                <p class="project-summary">
+                    Developed a time-series forecasting model using Facebook Prophet to predict cryptocurrency prices. Explored data collection from APIs, feature engineering, and model evaluation metrics.
+                </p>
+                <ul class="project-tech-stack">
+                    <li>Python</li>
+                    <li>Pandas</li>
+                    <li>Prophet</li>
+                    <li>Plotly (for visualizations)</li>
+                    <li>CoinGecko API</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/Pramod/crypto-prophet-forecast" target="_blank" class="btn btn-github">GitHub Repo</a>
+                    <a href="articles/crypto-prophet-case-study.html" class="btn btn-case-study">Case Study</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="Dashboard.png" alt="A dashboard showing loan default prediction results" class="project-thumbnail">
+                <h3>📊 Loan Default Prediction using Logistic Regression</h3>
+                <p class="project-summary">
+                    This report outlines the development of a logistic regression model to predict the probability of loan default and segment borrowers based on risk. The model shows strong predictive performance, with an AUC of 0.879 and an accuracy of 86.7%. Key predictors of default include loan grade, income, home ownership status, and the loan-to-income ratio. While the model is highly precise in identifying defaults, it shows a trade-off in recall—highlighting an opportunity to adjust the classification threshold to reduce the number of missed default cases. These insights support effective customer segmentation, enabling financial institutions to tailor lending strategies, manage risk more efficiently, and improve profitability. Overall, the model serves as a powerful, data-driven tool for making informed decisions in credit risk assessment.
+                </p>
+                <ul class="project-tech-stack">
+                    <li>Python</li>
+                    <li>Pandas</li>
+                    <li>Scikit-learn</li>
+                    <li>Matplotlib</li>
+                    <li>Seaborn</li>
+                    <li>Jupyter Notebook</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/pramodtim/Loan_Default_Prediction" target="_blank" class="btn btn-github">GitHub Repo</a>
+                    <a href="Final_Project_Report.pdf" target="_blank" class="btn btn-case-study">View Report (PDF)</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>🔍 Exploratory Data Analysis of Sales Data</h3>
+                <p>Performed in-depth EDA on a sales dataset to identify trends, customer segments, and product performance using Pandas and Matplotlib/Seaborn.</p>
+                <a href="#" class="btn">View Details</a>
+            </div>
+
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Pramod</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
