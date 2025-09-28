@@ -1,75 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Pramod's Portfolio - About Me</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pramod's Portfolio - About Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.png" />
+</head>
 <body>
+ <header>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <!-- Brand -->
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand-dot">P</span>
+        <span class="brand-text">Pramod Timalsina</span>
+      </a>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+      <!-- Mobile hamburger (keep as-is) -->
+      <input id="nav-toggle" type="checkbox" aria-label="Toggle menu">
+      <label class="hamburger" for="nav-toggle"><span></span><span></span><span></span></label>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content-wrapper">
-            <div class="about-image">
-                <img src="pramod.jpg" alt="Professional headshot of Pramod Timalsina" class="profile-pic">
-            </div>
-            <div class="about-text">
-                <p>Hi, I’m Pramod Timalsina from Nepal – currently living in London and pursuing an MSc in Business Analytics at the University of West London. Before moving to the UK, I spent over nine years working in public administration in Nepal, leading teams, managing projects, and helping improve local services. It was a rewarding experience that taught me a lot about leadership, communication, and working with people from all walks of life.</p>
-                
-                <p>Now, I’m diving deep into the world of data analytics — something I’ve always been curious about. I'm especially interested in how we can use data to solve real-world problems and make smarter decisions in business. I enjoy working with tools like Python, Tableau, EViews, MySQL, and Excel, and I’m building skills in data visualization, forecasting, and predictive modelling.</p>
-                
-                <p>Outside of work and study, I enjoy traveling, learning about different cultures, and telling stories through data. I’m always open to new opportunities to learn, collaborate, and grow — especially in areas that bring together people, ideas, and technology.</p>
-                
-                <p>Thanks for stopping by my page — feel free to get in touch!</p>
+      <!-- Menu -->
+      <ul class="menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Me</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="articles.html" class="nav-link">Articles</a></li>
+        <li><a href="contact.html" class="nav-link btn btn-small btn-ghost">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-                <h3>My Core Skills</h3>
-                <div class="skills-category">
-                    <h4>Programming & Databases</h4>
-                    <ul>
-                        <li>Python</li>
-                        <li>MySQL</li>
-                        <li>Excel</li>
-                        <li>EViews</li>
-                    </ul>
-                </div>
-                <div class="skills-category">
-                    <h4>Data Analysis & Concepts</h4>
-                    <ul>
-                        <li>Data Visualization</li>
-                        <li>Forecasting</li>
-                        <li>Predictive Modelling</li>
-                        <li>Project Management</li>
-                        <li>Leadership & Communication</li>
-                    </ul>
-                </div>
-                <div class="skills-category">
-                    <h4>Tools & Platforms</h4>
-                    <ul>
-                        <li>Tableau</li>
-                        <li>Microsoft Office Suite</li>
-                        <li>[Add any other relevant tools like Git/GitHub if you use them regularly]</li>
-                    </ul>
-                </div>
 
-                <a href="contact.html" class="btn primary-btn" style="margin-top: 30px;">Contact Me</a>
-            </div>
+  <section id="about" class="page">
+    <h2>About Me</h2>
+
+    <div class="about-content-wrapper">
+      <div class="about-image">
+        <img src="pramod.jpg" alt="Professional headshot of Pramod Timalsina" class="profile-pic">
+      </div>
+
+      <div class="about-text">
+        <p>Hi, I’m Pramod Timalsina from Nepal — currently living in London and pursuing an MSc in Business Analytics at the University of West London. Previously, I spent over nine years in public administration, leading teams, managing projects, and improving local services.</p>
+        <p>Now I’m diving deep into data analytics. I work with Python, Tableau, EViews, MySQL and Excel; my interests include data visualisation, forecasting and predictive modelling.</p>
+        <p>Outside study and work, I enjoy travelling, learning cultures and telling stories through data. I’m always open to collaborations and learning opportunities.</p>
+
+        <h3>My Core Skills</h3>
+
+        <div class="skills-category">
+          <h4>Programming & Databases</h4>
+          <ul>
+            <li>Python</li><li>MySQL</li><li>Excel</li><li>EViews</li>
+          </ul>
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2025 Pramod</p>
-    </footer>
+        <div class="skills-category">
+          <h4>Data Analysis & Concepts</h4>
+          <ul>
+            <li>Data Visualisation</li><li>Forecasting</li><li>Predictive Modelling</li><li>Project Management</li><li>Leadership & Communication</li>
+          </ul>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="skills-category">
+          <h4>Tools & Platforms</h4>
+          <ul>
+            <li>Tableau</li><li>Microsoft Office</li><li>GitHub</li>
+          </ul>
+        </div>
+
+        <a href="contact.html" class="btn primary-btn" style="margin-top:24px">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Pramod Timalsina</p>
+      <div class="social">
+        <a href="https://github.com/pramodtim" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/pramod-timalsina-656840192" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:pramodtim2014@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

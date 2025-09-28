@@ -1,541 +1,313 @@
-/* style.css */
-
-/* --- 1. General Body and Layout --- */
-body {
-    font-family: 'Open Sans', sans-serif; /* Example: Use Google Fonts here */
-    margin: 0;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-    overflow-x: hidden; /* Prevent horizontal scroll bar */
+/* ===== Theme tokens ===== */
+:root{
+  --bg:#0b1020; --panel:#111633; --text:#e6e9f5; --muted:#a6b3c7;
+  --brand:#22d3ee; --brand2:#60a5fa; --accent:#facc15;
+  --radius:22px; --shadow:0 18px 40px -18px rgba(2,6,23,.45);
 }
 
-/* --- 2. Common Section Styling --- */
-section {
-    padding: 40px 20px;
-    margin: 20px auto; /* Center sections with auto margin */
-    max-width: 960px; /* Limit content width */
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+/* ===== Base ===== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font:16px/1.6 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:#0f172a;
+  background:#f6f7fb;
+}
+.container{width:min(1100px,92%); margin-inline:auto}
+.center{text-align:center}
+.muted{color:#6b7280}
+.link{color:#2563eb; text-decoration:none; font-weight:600}
+.link:hover{text-decoration:underline}
+h1{font-size:clamp(2rem,4.6vw,3.4rem); line-height:1.12; margin:.4em 0}
+h2{font-size:clamp(1.6rem,2.6vw,2.1rem); margin:.4em 0}
+h3{font-size:1.25rem; margin:.4em 0}
+
+/* ===== NAV (glassy + mobile) ===== */
+.site-nav{
+  position:sticky; top:0; z-index:40;
+  background:rgba(15,23,42,.7);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav-inner{
+  width:min(1100px,92%); margin:auto;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:12px 0;
+}
+.brand{display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-weight:800; letter-spacing:.2px}
+.brand-dot{
+  display:grid; place-items:center; width:36px; height:36px; border-radius:12px;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
+  color:#06111a; font-weight:900
 }
 
-h1, h2, h3 {
-    font-family: 'Montserrat', sans-serif; /* Example: Use a different Google Font for headings */
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+.menu{list-style:none; display:flex; gap:20px; margin:0; padding:0}
+.nav-link{color:#fff; text-decoration:none; font-weight:700; opacity:.92; padding-bottom:6px}
+.nav-link:hover{opacity:1}
+.nav-link.active, .menu a[aria-current="page"]{border-bottom:2px solid var(--brand)}
+
+#nav-toggle{display:none}
+.hamburger{display:none; width:36px; height:36px; position:relative; cursor:pointer}
+.hamburger span{position:absolute; left:7px; right:7px; height:2px; background:#fff; transition:.2s}
+.hamburger span:nth-child(1){top:10px}
+.hamburger span:nth-child(2){top:16px}
+.hamburger span:nth-child(3){top:22px}
+
+@media (max-width: 860px){
+  .hamburger{display:block}
+  .menu{
+    display:none; position:absolute; right:4%; left:4%; top:60px;
+    flex-direction:column; gap:10px; padding:14px;
+    background:rgba(15,23,42,.97);
+    border:1px solid rgba(255,255,255,.1); border-radius:14px;
+  }
+  #nav-toggle:checked ~ .hamburger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  #nav-toggle:checked ~ .hamburger span:nth-child(2){opacity:0}
+  #nav-toggle:checked ~ .hamburger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  #nav-toggle:checked ~ .menu{display:flex}
 }
 
-/* --- 3. Navigation Bar --- */
-nav {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+/* ===== HERO (clean, no animation) ===== */
+.hero{padding:0; margin:22px 0}
+.hero .hero-inner{
+  width:min(1200px,94%); margin:auto;
+  position:relative; height:440px;          /* a bit shorter = more standard */
+  display:grid; place-items:center; text-align:center;
+  border-radius:22px; overflow:hidden; box-shadow:var(--shadow);
+  isolation:isolate;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Use flexbox for horizontal menu */
-    justify-content: center; /* Center the menu items */
+/* Static mesh/diagonal gradient that matches your cyan/blue brand tones */
+.hero .hero-inner::before{
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(800px 400px at -10% -20%, rgba(124,58,237,.55) 0%, transparent 55%),
+    radial-gradient(700px 420px at 110% 0%, rgba(59,130,246,.55) 0%, transparent 55%),
+    linear-gradient(45deg, #4f46e5, #0ea5e9 60%, #22d3ee);
+  filter:saturate(1.05) brightness(1.03);
 }
 
-nav ul li {
-    margin: 0 15px;
+/* Soft highlight + subtle grid texture (very faint) */
+.hero .hero-inner::after{
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(60% 70% at 50% 10%, rgba(255,255,255,.18), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05), rgba(255,255,255,.05) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.04) 1px, transparent 1px, transparent 40px);
+  mix-blend-mode: overlay;
+  opacity:.35;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, border-bottom 0.3s ease, padding-bottom 0.3s ease; /* Smooth hover effect */
-    padding-bottom: 5px; /* Space for border-bottom */
+.hero .hero-inner > *{position:relative}
+.hero h1{color:#fff; text-shadow:0 6px 28px rgba(0,0,0,.30)}
+.hero p{color:#eef6ff}
+
+.tagline{
+  margin-top:.4rem;
+  font-weight:800;
+  color:#fde68a;                   /* keep the gold accent for contrast */
+  letter-spacing:.25px;
+  text-shadow:0 2px 8px rgba(0,0,0,.25);
 }
 
-nav ul li a:hover {
-    color: #ffd700; /* Example highlight color */
-    border-bottom: 2px solid #ffd700;
+.hero-actions{display:flex; gap:14px; justify-content:center; margin-top:18px}
+
+/* turn the “availability” pills into a tighter row */
+.badges{
+  margin:16px 0 0; padding:0; list-style:none;
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap
+}
+.badges li{
+  font-size:.95rem; color:#e2e8f0; opacity:.95;
+  padding:6px 12px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
 }
 
-/* Active navigation link style (JavaScript will add the 'active' class) */
-nav ul li a.active {
-    color: #ffd700; /* Highlight color for current page */
-    border-bottom: 2px solid #ffd700;
+
+/* Buttons */
+.btn{display:inline-block; padding:14px 22px; border-radius:50px; font-weight:800; text-decoration:none; transition:.15s ease; box-shadow:var(--shadow)}
+.btn-small{padding:10px 14px; border-radius:12px; font-weight:700}
+.primary-btn{background:linear-gradient(90deg,var(--accent),#f59e0b); color:#111}
+.primary-btn:hover{transform:translateY(-2px); opacity:.96}
+.secondary-btn{background:transparent; color:#fff; border:2px solid #fff}
+.secondary-btn:hover{background:rgba(255,255,255,.16)}
+.btn-ghost{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.2)}
+
+/* Sections */
+.section{padding:64px 0}
+.section-alt{background:linear-gradient(180deg,#ffffff, #f7f8fb)}
+.container.narrow{width:min(900px,92%)}
+.section-head{display:flex; align-items:end; justify-content:space-between; gap:14px; margin-bottom:18px}
+
+/* Cards */
+.grid{display:grid; gap:18px}
+.cards-3{grid-template-columns:repeat(3, 1fr)}
+@media (max-width: 980px){.cards-3{grid-template-columns:1fr 1fr}}
+@media (max-width: 640px){.cards-3{grid-template-columns:1fr}}
+
+.card{
+  background:#ffffff;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 18px 40px -24px rgba(2,6,23,.2);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  border-color:#c7d2fe;
+  box-shadow:0 26px 52px -22px rgba(2,6,23,.28);
+}
+.thumb{overflow:hidden; border-radius:14px; height:160px; margin-bottom:12px; background:#eef2ff}
+.thumb svg{display:block; width:100%; height:100%}
+.stack{list-style:none; padding:0; margin:10px 0 0; display:flex; flex-wrap:wrap; gap:8px}
+.stack li{background:#eef2ff; color:#334155; border-radius:999px; padding:6px 10px; font-size:.85rem}
+.card-actions{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+
+/* CTA */
+.cta{padding:64px 0}
+.cta-inner{
+  background:linear-gradient(135deg, rgba(34,211,238,.18), rgba(96,165,250,.18));
+  border:1px solid #dbeafe;
+  border-radius:22px;
+  padding:22px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  width:min(1100px,92%); margin-inline:auto;
 }
 
-/* --- 4. Home Section Specific Styles --- */
-#home {
-    min-height: 80vh; /* Make it take up at least 80% of the viewport height */
-    display: flex; /* Use flexbox to center content */
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    text-align: center; /* Center text within items */
-    padding: 20px; /* Add some padding just in case */
-    
-    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Blue/Purple gradient background */
-    color: #fff; /* White text for contrast on dark backgrounds */
-    border-radius: 0; /* No border-radius if full width */
-    box-shadow: none; /* No shadow if full width */
+/* Footer */
+.site-footer{border-top:1px solid #e5e7eb; background:#111827; color:#d1d5db; margin-top:40px}
+.footer-inner{
+  width:min(1100px,92%); margin:auto;
+  display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+  padding:16px 0;
+}
+.footer-inner .social{display:flex; gap:14px}
+.footer-inner .social a{color:#93c5fd; text-decoration:none}
+.footer-inner .social a:hover{text-decoration:underline}
+/* ---------- Site-wide layout fixes ---------- */
+
+/* A consistent page wrapper you can reuse on About / Projects / Articles / Contact */
+.page { padding: 56px 0; }
+.page .container { width: min(1000px, 92%); margin-inline: auto; }
+
+/* Keep paragraphs readable (≈70 characters per line) */
+.prose { max-width: 70ch; }
+
+/* Prevent any long strings/URLs from breaking layout */
+p, li, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-#home h1 {
-    font-size: 3.5em; /* Larger font size for impact */
-    margin-bottom: 0.1em; /* Reduce space below for tighter look */
-    color: #fff; /* Ensure it's white if background is dark */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Subtle shadow for depth */
-    letter-spacing: 1px; /* Slightly space out letters */
+/* Images never overflow; they scale down on small screens */
+img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- About page layout ---------- */
+.about-wrap {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  align-items: start;
 }
 
-#home p {
-    font-size: 1.3em; /* Good size for primary description */
-    margin-top: 0;
-    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
-}
-
-.tagline {
-    font-size: 1.6em; /* Even larger for the tagline */
-    font-weight: 600; /* Bolder */
-    margin-top: 15px; /* Space above tagline */
-    margin-bottom: 30px; /* Space below tagline before buttons */
-    color: #ffd700; /* A contrasting accent color (e.g., gold) */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.hero-actions {
-    margin-top: 30px; /* Space above buttons */
-    display: flex; /* Arrange buttons side-by-side */
-    gap: 20px; /* Space between buttons */
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-    justify-content: center; /* Center buttons if they wrap */
-}
-
-/* --- 5. Button Styling --- */
-.btn {
-    display: inline-block;
-    padding: 15px 30px; /* Generous padding for clickable area */
-    border-radius: 50px; /* Pill-shaped buttons */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition for all changes */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow */
-    border: none; /* Ensure no default border */
-}
-
-.primary-btn {
-    background-color: #ffd700; /* Gold/Yellow for primary action */
-    color: #333; /* Dark text for contrast on yellow */
-}
-
-.primary-btn:hover {
-    background-color: #e6c200; /* Darker yellow on hover */
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* More prominent shadow */
-}
-
-.secondary-btn {
-    background-color: transparent; /* Transparent background */
-    color: #fff; /* White text for contrast */
-    border: 2px solid #fff; /* White border */
-}
-
-.secondary-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Slight white overlay on hover */
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* More prominent shadow */
-}
-
-/* --- 6. About Me Section Styles --- */
+/* Profile image sizing */
 .profile-pic {
-    display: block; /* Make it a block element to center with margin auto */
-    margin: 0 auto 20px auto; /* Center image and add bottom margin */
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Make it round */
-    object-fit: cover; /* Ensure image covers the area nicely */
-    border: 3px solid #6a11cb; /* Example border */
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;           /* or 50% if you prefer circular */
+  box-shadow: 0 10px 24px -14px rgba(0,0,0,.25);
 }
 
-/* Two-column layout for About Me (requires HTML structure update) */
-.about-content-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    align-items: center;
-    justify-content: center; /* Center content horizontally */
+/* Skills cards look tidier in a responsive grid */
+.skills-grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.skill-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 12px 28px -20px rgba(2,6,23,.18);
+}
+.skill-card h4 { margin: 0 0 8px; }
+
+/* Make the skills list “chip-like” */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skills-list li {
+  background: #eef2ff;
+  color: #334155;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: .9rem;
+  white-space: nowrap;
 }
 
-.about-image {
-    flex: 1;
-    min-width: 200px; /* Minimum width before wrapping */
-    text-align: center;
-}
-
-.about-text {
-    flex: 2;
-    min-width: 300px; /* Minimum width before wrapping */
-    max-width: 600px; /* Prevents text from being too wide */
-    text-align: left; /* Align text naturally */
-}
-
-.skills-category ul {
-    list-style: none; /* Remove bullet points */
-    padding: 0;
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Space between skill items */
-    justify-content: center; /* Center skills horizontally */
-}
-
-.skills-category li {
-    background-color: #e9e9e9;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    color: #555;
-    white-space: nowrap; /* Prevent skills from breaking lines inside the item */
-}
-
-
-/* --- 7. Projects Section Styles --- */
-.project-grid {
-    display: grid; /* Use CSS Grid for layout */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-    gap: 25px; /* Space between cards */
-    margin-top: 30px;
-}
-
-.project-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    text-align: center;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Hover effect */
-}
-
-.project-card:hover {
-    transform: translateY(-5px); /* Lift card on hover */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* More prominent shadow */
-}
-
-.project-card h3 {
-    color: #2575fc;
-    margin-top: 0;
-    font-size: 1.3em;
-}
-
-.project-card p {
-    font-size: 0.95em;
-    color: #555;
-    margin-bottom: 20px;
-}
-
+/* ---------- Project thumbnails safety ---------- */
 .project-thumbnail {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;            /* crops gracefully instead of stretching */
+  border-radius: 10px;
 }
 
-.project-tech-stack {
-    list-style: none;
-    padding: 0;
-    margin-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    font-size: 0.85em;
-    color: #777;
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 900px) {
+  .about-wrap { grid-template-columns: 1fr; }
+  .profile-pic { width: 140px; height: 140px; margin-inline: auto; }
+  .prose { max-width: 100%; }   /* allow full width on mobile */
 }
 
-.project-tech-stack li {
-    background-color: #eee;
-    padding: 5px 10px;
-    border-radius: 15px;
-    white-space: nowrap;
+/* --- Brand text style (prevents truncation) --- */
+.brand-text{
+  color:#fff;
+  font-weight:800;
+  letter-spacing:.2px;
+  white-space:nowrap;
 }
 
-.project-links {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+/* --- Make hero overlays not block clicks --- */
+.hero .hero-inner::before,
+.hero .hero-inner::after{
+  pointer-events:none;   /* <-- critical */
+  z-index:0;
+}
+.hero .hero-inner > *{
+  position:relative;
+  z-index:1;             /* buttons & text are clickable */
 }
 
-.btn-github { background-color: #24292e; color: #fff; }
-.btn-github:hover { background-color: #000; }
-
-.btn-case-study { background-color: #007bff; color: #fff; }
-.btn-case-study:hover { background-color: #0056b3; }
-
-.btn-demo { background-color: #28a745; color: #fff; }
-.btn-demo:hover { background-color: #218838; }
-
-
-/* --- 8. Articles Section Styles --- */
-.article-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+/* ---- Fix project card buttons (make text visible on white cards) ---- */
+.card-actions .btn,
+.card-actions .btn-ghost{
+  background:#fff;                 /* light pill buttons on cards */
+  border:1px solid #e5e7eb;
+  color:#0f172a !important;        /* dark text, overrides visited color */
+  text-decoration:none;
+  box-shadow:0 12px 28px -20px rgba(2,6,23,.15);
 }
 
-.article-preview {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    text-align: left; /* Align text for readability */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+.card-actions .btn:hover,
+.card-actions .btn-ghost:hover{
+  transform:translateY(-2px);
+  border-color:#c7d2fe;
+  box-shadow:0 18px 40px -22px rgba(2,6,23,.22);
 }
 
-.article-preview:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.article-preview h3 {
-    margin-top: 0;
-    font-size: 1.4em;
-    text-align: left; /* Keep title left-aligned */
-}
-
-.article-preview h3 a {
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.article-preview h3 a:hover {
-    color: #2575fc;
-}
-
-.article-thumbnail {
-    max-width: 100%;
-    height: 180px; /* Fixed height for consistent look */
-    object-fit: cover; /* Cover the area, cropping if necessary */
-    border-radius: 4px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: block; /* Ensures proper display */
-    margin-left: auto; /* Center image */
-    margin-right: auto; /* Center image */
-}
-
-.article-meta {
-    font-size: 0.85em;
-    color: #777;
-    margin-bottom: 10px;
-}
-
-.article-excerpt {
-    font-size: 0.95em;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.btn-read-more {
-    background-color: #007bff;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    text-align: center;
-}
-
-.btn-read-more:hover {
-    background-color: #0056b3;
-}
-
-
-/* --- 9. Contact Section Styles --- */
-.contact-form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 25px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block; /* Make labels appear on their own line */
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #444;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="subject"], /* Added for the subject field */
-.form-group textarea {
-    width: calc(100% - 22px); /* Account for padding and border */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-    box-sizing: border-box; /* Include padding/border in width */
-}
-
-.form-group textarea {
-    resize: vertical; /* Allow vertical resizing */
-}
-
-.contact-form button {
-    display: block; /* Make button full width or center it */
-    width: 100%;
-    padding: 12px;
-    background-color: #28a745; /* A success green */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.contact-form button:hover {
-    background-color: #218838;
-}
-
-.social-links {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px dashed #eee;
-}
-
-.social-links h3 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.social-links ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Space between social icons */
-}
-
-.social-links ul li a {
-    color: #2575fc; /* Default icon color */
-    font-size: 2.2em; /* Larger icons */
-    transition: transform 0.2s ease, color 0.3s ease;
-}
-
-.social-links ul li a:hover {
-    transform: translateY(-3px); /* Lift effect */
-    color: #1a5ac9; /* Darker color on hover */
-}
-
-
-/* --- 10. Footer --- */
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    background-color: #333;
-    color: #fff;
-    font-size: 0.9em;
-}
-
-/* --- 11. Responsive Design (Media Queries) --- */
-@media (max-width: 768px) {
-    /* Navigation adjustments */
-    nav ul {
-        flex-direction: column; /* Stack navigation items vertically */
-    }
-    nav ul li {
-        margin: 10px 0;
-    }
-    nav ul li a {
-        padding: 8px 0; /* Add vertical padding for easier tapping */
-    }
-
-    /* General section adjustments */
-    section {
-        margin: 15px;
-        padding: 25px 15px;
-    }
-
-    /* Home section adjustments */
-    #home h1 {
-        font-size: 2.5em;
-    }
-    #home p {
-        font-size: 1em;
-    }
-    .tagline {
-        font-size: 1.2em;
-    }
-    .hero-actions {
-        flex-direction: column; /* Stack buttons vertically on small screens */
-        gap: 15px; /* Adjust gap */
-    }
-    .btn {
-        width: 80%; /* Make buttons wider */
-        max-width: 300px; /* Limit max width */
-    }
-
-    /* About Me section adjustments */
-    .about-content-wrapper {
-        flex-direction: column; /* Stack vertically */
-    }
-    .about-text {
-        text-align: center; /* Center text on small screens */
-    }
-    .skills-category ul {
-        justify-content: center; /* Ensure skills are centered */
-    }
-
-    /* Projects grid adjustment */
-    .project-grid {
-        grid-template-columns: 1fr; /* Single column on small screens */
-    }
-
-    /* Articles grid adjustment */
-    .article-list {
-        grid-template-columns: 1fr; /* Single column on small screens */
-    }
-
-    /* Contact form adjustment */
-    .contact-form {
-        padding: 15px;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="subject"],
-    .form-group textarea {
-        width: calc(100% - 20px); /* Adjust width for padding */
-    }
-
-    .social-links ul {
-        flex-wrap: wrap; /* Allow icons to wrap if needed */
-        gap: 15px; /* Adjust gap */
-    }
-}
-
-/* --- 12. Optional: Google Fonts Import (if you don't use <link> in HTML) --- */
-/*
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
-*/
+/* Ensure link color doesn’t flip to purple after visiting */
+.btn, .btn:visited { color: inherit; }

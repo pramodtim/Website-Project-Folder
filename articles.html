@@ -1,30 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Pramod's Portfolio - Articles</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pramod's Portfolio - Articles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.png" />
 </head>
 <body>
+  <header>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <!-- Brand -->
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand-dot">P</span>
+        <span class="brand-text">Pramod Timalsina</span>
+      </a>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+      <!-- Mobile hamburger (keep as-is) -->
+      <input id="nav-toggle" type="checkbox" aria-label="Toggle menu">
+      <label class="hamburger" for="nav-toggle"><span></span><span></span><span></span></label>
 
-    <section id="articles">
-        <h2>My Articles & Blog Posts</h2>
-        <p>New articles are coming soon! </p>
-        </section>
+      <!-- Menu -->
+      <ul class="menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Me</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="articles.html" class="nav-link">Articles</a></li>
+        <li><a href="contact.html" class="nav-link btn btn-small btn-ghost">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-    <footer>
-        <p>&copy; 2025 Pramod</p>
-    </footer>
 
+  <section id="articles" class="page">
+    <h2>My Articles &amp; Blog Posts</h2>
+    <p class="center muted">New articles are coming soon!</p>
+
+    <div class="article-list">
+      <article class="article-preview">
+        <h3><a href="#">SQL Window Functions in 10 minutes</a></h3>
+        <p class="article-meta">Tutorial · 5 min</p>
+        <p class="article-excerpt">A tight cheatsheet with the patterns I use most in analytics work.</p>
+        <a href="#" class="btn btn-read-more">Read</a>
+      </article>
+
+      <article class="article-preview">
+        <h3><a href="#">From Excel to Pandas: a practical map</a></h3>
+        <p class="article-meta">Guide · 6 min</p>
+        <p class="article-excerpt">Common Excel tasks, shown in Pandas — with gotchas.</p>
+        <a href="#" class="btn btn-read-more">Read</a>
+      </article>
+
+      <article class="article-preview">
+        <h3><a href="#">How to write case studies recruiters love</a></h3>
+        <p class="article-meta">Career · 4 min</p>
+        <p class="article-excerpt">Problem → approach → results → impact, with visuals and links.</p>
+        <a href="#" class="btn btn-read-more">Read</a>
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Pramod Timalsina</p>
+      <div class="social">
+        <a href="https://github.com/pramodtim" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/pramod-timalsina-656840192" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:pramodtim2014@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
