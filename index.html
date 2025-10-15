@@ -1,35 +1,109 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Pramod's Portfolio - Home</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pramod Timalsina — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/images/favicon.png">
+<script defer src="assets/js/script.js"></script>
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+<header class="header">
+  <div class="container navbar">
+    <div class="logo"><a href="index.html" style="text-decoration:none;color:var(--primary)">Pramod</a></div>
+    <nav class="navlinks" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume/Pramod_Timalsina_CV.pdf" class="cta" download>Download CV</a>
+      <button id="themeToggle" title="Toggle theme" style="margin-left:12px;padding:8px;border-radius:8px;border:none;cursor:pointer">🌓</button>
     </nav>
+    <button id="navBtn" class="mobile-menu" style="display:none;border:none;background:none;font-size:20px;cursor:pointer">☰</button>
+  </div>
+</header>
 
-    <section id="home">
-        <h1>Hello, I'm Pramod</h1>
-        <p>Data Analytics Student | Python & SQL Enthusiast</p>
-        <p class="tagline">Empowering Decisions Through Data-Driven Solutions</p>
-        <div class="hero-actions">
-            <a href="projects.html" class="btn primary-btn">View My Projects</a>
-            <a href="contact.html" class="btn secondary-btn">Get In Touch</a>
+<main class="container">
+  <section class="hero">
+    <div class="left">
+      <h1>Hi, I'm <strong>Pramod Timalsina</strong></h1>
+      <p>Data Analyst — MSc Business Analytics (University of West London). I build predictive models, dashboards and data products to help teams make better decisions.</p>
+      <a class="cta" href="projects.html">View Projects</a>
+    </div>
+    <div class="right center">
+      <img src="assets/images/profile.jpg" alt="Pramod Timalsina" class="profile-pic">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid">
+      <div class="card">
+        <h3>Profile Summary</h3>
+        <p>Data-driven professional with 9+ years’ experience in administration and customer service, now specialising in data analytics and machine learning. Skilled in Python, Tableau, MySQL, Excel and EViews.</p>
+      </div>
+      <div class="card">
+        <h3>Currently</h3>
+        <p>Receptionist (Part-Time) at Travelodge Hotel, Battersea, London • MSc Business Analytics (Sep 2024 – Sep 2025)</p>
+      </div>
+      <div class="card">
+        <h3>Contact</h3>
+        <p>Email: pramodtim2014@gmail.com<br>Phone: +44 7440 139011</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+  <h2>Featured Projects</h2>
+  <div class="projects-grid grid">
+
+    <div class="project card">
+      <img src="assets/images/Dashboard_LoanDefault.png" alt="Loan Default Prediction">
+      <div class="meta">
+        <h4>Loan Default Prediction</h4>
+        <p>Logistic regression model — 86.7% accuracy. Tools: Python, EViews.</p>
+        <div class="links">
+          <a href="assets/images/Final_Project_Report_Loan_Default.pdf" target="_blank">📄 View Report (PDF)</a> |
+          <a href="https://github.com/yourusername/loan-default" target="_blank">💻 View Code</a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Pramod</p>
-    </footer>
+    <div class="project card">
+      <img src="assets/images/Customer_Segment_DATUK.jpg" alt="Customer Segmentation">
+      <div class="meta">
+        <h4>Customer Segmentation</h4>
+        <p>K-means clustering to segment customers for targeted marketing. Tools: Python, Tableau.</p>
+        <div class="links">
+          <a href="assets/images/Consultancy Report_DATUK.pdf" target="_blank">📄 View Report (PDF)</a> |
+          <a href="https://github.com/yourusername/customer-segmentation" target="_blank">💻 View Code</a>
+        </div>
+      </div>
+    </div>
 
+    <div class="project card">
+      <img src="assets/images/proj3.jpg" alt="Bank Marketing Analysis">
+      <div class="meta">
+        <h4>Bank Marketing Analysis</h4>
+        <p>EDA and dashboarding to identify campaign drivers. Tools: Python, Tableau.</p>
+        <div class="links">
+          <a href="assets/pdfs/bank-marketing.pdf" target="_blank">📄 View Report (PDF)</a> |
+          <a href="https://github.com/yourusername/bank-marketing" target="_blank">💻 View Code</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <section class="section footer">
+    <p>© 2025 Pramod Timalsina — Built with HTML, CSS & JavaScript</p>
+    <p><a href="https://linkedin.com/in/pramod-timalsina-656840192" target="_blank">LinkedIn</a> • <a href="https://github.com/pramodtim" target="_blank">GitHub</a></p>
+  </section>
+</main>
 </body>
 </html>

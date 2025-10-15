@@ -1,78 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pramod's Portfolio - Projects</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
-<body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projects — Pramod Timalsina</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/images/favicon.png">
+<script defer src="assets/js/script.js"></script></head><body>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+<header class="header">
+  <div class="container navbar">
+    <div class="logo"><a href="index.html" style="text-decoration:none;color:var(--primary)">Pramod</a></div>
+    <nav class="navlinks" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume/Pramod_Timalsina_CV.pdf" class="cta" download>Download CV</a>
+      <button id="themeToggle" title="Toggle theme" style="margin-left:12px;padding:8px;border-radius:8px;border:none;cursor:pointer">🌓</button>
     </nav>
+    <button id="navBtn" class="mobile-menu" style="display:none;border:none;background:none;font-size:20px;cursor:pointer">☰</button>
+  </div>
+</header>
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
+<main class="container">
+  <section class="section">
+    <h2>Portfolio — Grid</h2>
+    <div class="projects-grid grid">
+      <div class="project card">
+        <img src="assets/images/proj1.jpg" alt="Loan Default">
+        <div class="meta"><h4>Loan Default Prediction</h4><p>Logistic Regression model — 86.7% accuracy. Tools: EViews, Python.</p></div>
+      </div>
+      <div class="project card">
+        <img src="assets/images/proj2.jpg" alt="Segmentation">
+        <div class="meta"><h4>Customer Segmentation</h4><p>K-Means clustering to group customers for targeted campaigns. Tools: Python, Tableau.</p></div>
+      </div>
+      <div class="project card">
+        <img src="assets/images/proj3.jpg" alt="Bank Marketing">
+        <div class="meta"><h4>Bank Marketing Campaign Analysis</h4><p>Analysis and dashboarding to increase campaign accuracy. Tools: Python, Tableau.</p></div>
+      </div>
+      <div class="project card">
+        <img src="assets/images/proj4.jpg" alt="Project 4">
+        <div class="meta"><h4>Additional Project</h4><p>Additional analytics work and experiments.</p></div>
+      </div>
+    </div>
+  </section>
 
-            <div class="project-card">
-                <img src="Customer_Segment.jpg" alt="A dashboard showing customer segmentation for DAT UK Ltd" class="project-thumbnail">
-                <h3>📈 DAT UK Ltd: Customer & Sales Analysis</h3>
-                <p class="project-summary">
-                    This project analyzes customer transactions for an internet merchant using RFM analysis, customer segmentation, and predictive modeling. The study identifies key trends in customer purchasing behavior, seasonal revenue patterns, and provides data-driven strategies for improving profitability.
-                </p>
-                <ul class="project-tech-stack">
-                    <li>Python</li>
-                    <li>Pandas</li>
-                    <li>Scikit-learn</li>
-                    <li>Jupyter Notebook</li>
-                </ul>
-                <div class="project-links">
-                    <a href="Programming_File_DatUK.ipynb" target="_blank" class="btn btn-github">View Notebook</a>
-                    <a href="Consultancy Report_DATUK.pdf" target="_blank" class="btn btn-case-study">View Report (PDF)</a>
-                </div>
-            </div>
-            
+  <section class="section">
+    <h2>Portfolio — Slider</h2>
+    <div class="portfolio-slider card" style="padding:12px;position:relative;">
+      <div class="slide"><img src="assets/images/proj1.jpg" style="width:100%;height:320px;object-fit:cover"></div>
+      <div class="slide"><img src="assets/images/proj2.jpg" style="width:100%;height:320px;object-fit:cover"></div>
+      <div class="slide"><img src="assets/images/proj3.jpg" style="width:100%;height:320px;object-fit:cover"></div>
+    </div>
+  </section>
 
-            <div class="project-card">
-                <img src="Dashboard.png" alt="A dashboard showing loan default prediction results" class="project-thumbnail">
-                <h3>📊 Loan Default Prediction using Logistic Regression</h3>
-                <p class="project-summary">
-                    This report outlines the development of a logistic regression model to predict the probability of loan default and segment borrowers based on risk. The model shows strong predictive performance, with an AUC of 0.879 and an accuracy of 86.7%. Key predictors of default include loan grade, income, home ownership status, and the loan-to-income ratio. While the model is highly precise in identifying defaults, it shows a trade-off in recall—highlighting an opportunity to adjust the classification threshold to reduce the number of missed default cases. These insights support effective customer segmentation, enabling financial institutions to tailor lending strategies, manage risk more efficiently, and improve profitability. Overall, the model serves as a powerful, data-driven tool for making informed decisions in credit risk assessment.
-                </p>
-                <ul class="project-tech-stack">
-                    <li>Python</li>
-                    <li>Pandas</li>
-                    <li>Scikit-learn</li>
-                    <li>Matplotlib</li>
-                    <li>Seaborn</li>
-                    <li>Jupyter Notebook</li>
-                </ul>
-                <div class="project-links">
-                    <a href="https://github.com/pramodtim/Loan_Default_Prediction" target="_blank" class="btn btn-github">GitHub Repo</a>
-                    <a href="Final_Project_Report.pdf" target="_blank" class="btn btn-case-study">View Report (PDF)</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>🔍 Exploratory Data Analysis of Sales Data</h3>
-                <p>Performed in-depth EDA on a sales dataset to identify trends, customer segments, and product performance using Pandas and Matplotlib/Seaborn.</p>
-                <a href="#" class="btn">View Details</a>
-            </div>
-
-            </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Pramod</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+  <section class="section">
+    <h2>Projects — List</h2>
+    <ol>
+      <li><strong>Loan Default Prediction</strong> — Logistic regression, feature engineering, model evaluation.</li>
+      <li><strong>Customer Segmentation</strong> — K-means clustering and profiling for marketing targeting.</li>
+      <li><strong>Bank Marketing Campaign</strong> — EDA and dashboard with insights to improve targeting.</li>
+    </ol>
+  </section>
+</main></body></html>
