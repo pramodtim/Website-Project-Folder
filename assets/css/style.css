@@ -63,3 +63,38 @@ button.primary{background:var(--primary);color:white;padding:10px 14px;border-ra
   .navlinks{display:none}
   .mobile-menu{display:block}
 }
+
+<style>
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  z-index: 9999;
+}
+
+#chatBox {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 8px;
+}
+
+#userInput {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+button {
+  width: 100%;
+  padding: 6px;
+  cursor: pointer;
+}
+</style>
