@@ -135,3 +135,8 @@ async function sendMessage() {
     chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
 }
 </script>
+<div id="chatBox"></div>
+
+<input type="text" id="userInput" placeholder="Ask me something..." />
+<button onclick="sendMessage()">Send</button>
+
