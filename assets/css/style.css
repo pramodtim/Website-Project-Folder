@@ -65,3 +65,99 @@ button.primary{background:var(--primary);color:white;padding:10px 14px;border-ra
 }
 
 <style>
+
+/* =========================
+   Portfolio Chatbot Styles
+   ========================= */
+
+#chatToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary, #007bff);
+  color: #fff;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  z-index: 1000;
+}
+
+#chatToggle:hover {
+  transform: scale(1.05);
+}
+
+/* Chat container */
+#chatContainer {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  max-height: 480px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999;
+}
+
+/* Messages area */
+#chatBox {
+  padding: 12px;
+  overflow-y: auto;
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  background: #f9fafb;
+}
+
+/* User & Bot message styling */
+#chatBox p {
+  margin: 6px 0;
+}
+
+#chatBox p b {
+  color: var(--primary, #007bff);
+}
+
+/* Input area */
+#chatInputContainer {
+  display: flex;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+#chatInput {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+#chatSendBtn {
+  padding: 0 18px;
+  border: none;
+  background: var(--primary, #007bff);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#chatSendBtn:hover {
+  opacity: 0.9;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  #chatContainer {
+    width: 92%;
+    right: 4%;
+    bottom: 90px;
+  }
+}
