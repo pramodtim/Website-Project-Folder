@@ -58,47 +58,47 @@
   </section>
 
   <section class="section">
-  <h2>Featured Projects</h2>
-  <div class="projects-grid grid">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid grid">
 
-    <div class="project card">
-      <img src="assets/images/Dashboard_LoanDefault.png" alt="Loan Default Prediction">
-      <div class="meta">
-        <h4>Loan Default Prediction</h4>
-        <p>Logistic regression model — 86.7% accuracy. Tools: Python, EViews.</p>
-        <div class="links">
-          <a href="assets/images/Final_Project_Report_Loan_Default.pdf" target="_blank">📄 View Report (PDF)</a> |
-          <a href="https://github.com/yourusername/loan-default" target="_blank">💻 View Code</a>
+      <div class="project card">
+        <img src="assets/images/Dashboard_LoanDefault.png" alt="Loan Default Prediction">
+        <div class="meta">
+          <h4>Loan Default Prediction</h4>
+          <p>Logistic regression model — 86.7% accuracy. Tools: Python, EViews.</p>
+          <div class="links">
+            <a href="assets/images/Final_Project_Report_Loan_Default.pdf" target="_blank">📄 View Report (PDF)</a> |
+            <a href="https://github.com/yourusername/loan-default" target="_blank">💻 View Code</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project card">
-      <img src="assets/images/Customer_Segment_DATUK.jpg" alt="Customer Segmentation">
-      <div class="meta">
-        <h4>Customer Segmentation</h4>
-        <p>K-means clustering to segment customers for targeted marketing. Tools: Python, Tableau.</p>
-        <div class="links">
-          <a href="assets/images/Consultancy Report_DATUK.pdf" target="_blank">📄 View Report (PDF)</a> |
-          <a href="https://github.com/yourusername/customer-segmentation" target="_blank">💻 View Code</a>
+      <div class="project card">
+        <img src="assets/images/Customer_Segment_DATUK.jpg" alt="Customer Segmentation">
+        <div class="meta">
+          <h4>Customer Segmentation</h4>
+          <p>K-means clustering to segment customers for targeted marketing. Tools: Python, Tableau.</p>
+          <div class="links">
+            <a href="assets/images/Consultancy Report_DATUK.pdf" target="_blank">📄 View Report (PDF)</a> |
+            <a href="https://github.com/yourusername/customer-segmentation" target="_blank">💻 View Code</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="project card">
-      <img src="assets/images/proj3.jpg" alt="Bank Marketing Analysis">
-      <div class="meta">
-        <h4>Bank Marketing Analysis</h4>
-        <p>EDA and dashboarding to identify campaign drivers. Tools: Python, Tableau.</p>
-        <div class="links">
-          <a href="assets/pdfs/bank-marketing.pdf" target="_blank">📄 View Report (PDF)</a> |
-          <a href="https://github.com/yourusername/bank-marketing" target="_blank">💻 View Code</a>
+      <div class="project card">
+        <img src="assets/images/proj3.jpg" alt="Bank Marketing Analysis">
+        <div class="meta">
+          <h4>Bank Marketing Analysis</h4>
+          <p>EDA and dashboarding to identify campaign drivers. Tools: Python, Tableau.</p>
+          <div class="links">
+            <a href="assets/pdfs/bank-marketing.pdf" target="_blank">📄 View Report (PDF)</a> |
+            <a href="https://github.com/yourusername/bank-marketing" target="_blank">💻 View Code</a>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</section>
+    </div>
+  </section>
 
   <section class="section footer">
     <p>© 2025 Pramod Timalsina — Built with HTML, CSS & JavaScript</p>
@@ -116,6 +116,7 @@
   </div>
 </div>
 
+<!-- Chat Script -->
 <script>
 const chatToggle = document.getElementById("chatToggle");
 const chatContainer = document.getElementById("chatContainer");
@@ -123,13 +124,22 @@ const chatBox = document.getElementById("chatBox");
 const chatInput = document.getElementById("chatInput");
 const chatSendBtn = document.getElementById("chatSendBtn");
 
+// Toggle chat window
 chatToggle.addEventListener("click", () => {
-  chatContainer.style.display = chatContainer.style.display === "flex" ? "none" : "flex";
+  chatContainer.style.display =
+    chatContainer.style.display === "flex" ? "none" : "flex";
 });
 
+// Send message on button click
+chatSendBtn.addEventListener("click", sendMessage);
+
+// Send message on Enter key
+chatInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") sendMessage();
+});
 
 async function sendMessage() {
-  const message = chatInput.value;
+  const message = chatInput.value.trim();
   if (!message) return;
 
   chatBox.innerHTML += `<p><b>You:</b> ${message}</p>`;
@@ -141,9 +151,7 @@ async function sendMessage() {
       "https://portfolio-agent-0y21.onrender.com/chat",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message })
       }
     );
@@ -158,7 +166,6 @@ async function sendMessage() {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 </script>
-
 
 </body>
 </html>
