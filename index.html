@@ -127,33 +127,38 @@ chatToggle.addEventListener("click", () => {
   chatContainer.style.display = chatContainer.style.display === "flex" ? "none" : "flex";
 });
 
+<script>
 async function sendMessage() {
   const message = chatInput.value;
-  if(!message) return;
+  if (!message) return;
 
   chatBox.innerHTML += `<p><b>You:</b> ${message}</p>`;
   chatInput.value = "";
   chatBox.scrollTop = chatBox.scrollHeight;
 
   try {
-    // Replace this with your deployed backend URL on Render or Netlify function
-    const res = await fetch("https://portfolio-agent-0y21.onrender.com/chat", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({message})
-    });
+    const res = await fetch(
+      "https://portfolio-agent-0y21.onrender.com/chat",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message })
+      }
+    );
+
     const data = await res.json();
     chatBox.innerHTML += `<p><b>Bot:</b> ${data.reply}</p>`;
-  } catch(err) {
+  } catch (err) {
+    console.error(err);
     chatBox.innerHTML += `<p><b>Bot:</b> Error connecting to backend.</p>`;
   }
 
   chatBox.scrollTop = chatBox.scrollHeight;
 }
-
-chatSendBtn.addEventListener("click", sendMessage);
-chatInput.addEventListener("keypress", (e) => { if(e.key === "Enter") sendMessage(); });
 </script>
+
 
 </body>
 </html>
