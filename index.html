@@ -8,6 +8,63 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" href="assets/images/favicon.png">
 <script defer src="assets/js/script.js"></script>
+<style>
+/* Chatbox styles */
+#chatToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#chatContainer {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 350px;
+  max-height: 500px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999;
+}
+
+#chatBox {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+#chatInputContainer {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#chatInput {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+#chatSendBtn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
 
@@ -29,82 +86,61 @@
 </header>
 
 <main class="container">
-  <section class="hero">
-    <div class="left">
-      <h1>Hi, I'm <strong>Pramod Timalsina</strong></h1>
-      <p>Data Analyst — MSc Business Analytics (University of West London). I build predictive models, dashboards and data products to help teams make better decisions.</p>
-      <a class="cta" href="projects.html">View Projects</a>
-    </div>
-    <div class="right center">
-      <img src="assets/images/Profile_Photo_Half.jpg" alt="Pramod Timalsina" class="profile-pic">
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="grid">
-      <div class="card">
-        <h3>Profile Summary</h3>
-        <p>Data-driven professional with 9+ years’ experience in administration and customer service, now specialising in data analytics and machine learning. Skilled in Python, Tableau, MySQL, Excel and EViews.</p>
-      </div>
-      <div class="card">
-        <h3>Currently</h3>
-        <p>Recent MSc Business Analytics graduate from the University of West London with hands-on experience in data analysis, visualization, and reporting.</p>
-      </div>
-      <div class="card">
-        <h3>Contact</h3>
-        <p>Email: pramodtim2014@gmail.com<br>Phone: +44 7440 139011</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-  <h2>Featured Projects</h2>
-  <div class="projects-grid grid">
-
-    <div class="project card">
-      <img src="assets/images/Dashboard_LoanDefault.png" alt="Loan Default Prediction">
-      <div class="meta">
-        <h4>Loan Default Prediction</h4>
-        <p>Logistic regression model — 86.7% accuracy. Tools: Python, EViews.</p>
-        <div class="links">
-          <a href="assets/images/Final_Project_Report_Loan_Default.pdf" target="_blank">📄 View Report (PDF)</a> |
-          <a href="https://github.com/yourusername/loan-default" target="_blank">💻 View Code</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="project card">
-      <img src="assets/images/Customer_Segment_DATUK.jpg" alt="Customer Segmentation">
-      <div class="meta">
-        <h4>Customer Segmentation</h4>
-        <p>K-means clustering to segment customers for targeted marketing. Tools: Python, Tableau.</p>
-        <div class="links">
-          <a href="assets/images/Consultancy Report_DATUK.pdf" target="_blank">📄 View Report (PDF)</a> |
-          <a href="https://github.com/yourusername/customer-segmentation" target="_blank">💻 View Code</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="project card">
-      <img src="assets/images/proj3.jpg" alt="Bank Marketing Analysis">
-      <div class="meta">
-        <h4>Bank Marketing Analysis</h4>
-        <p>EDA and dashboarding to identify campaign drivers. Tools: Python, Tableau.</p>
-        <div class="links">
-          <a href="assets/pdfs/bank-marketing.pdf" target="_blank">📄 View Report (PDF)</a> |
-          <a href="https://github.com/yourusername/bank-marketing" target="_blank">💻 View Code</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <section class="section footer">
-    <p>© 2025 Pramod Timalsina — Built with HTML, CSS & JavaScript</p>
-    <p><a href="https://linkedin.com/in/pramod-timalsina-656840192" target="_blank">LinkedIn</a> • <a href="https://github.com/pramodtim" target="_blank">GitHub</a></p>
-  </section>
+  <!-- Your existing sections -->
+  <!-- Hero, Profile Summary, Projects, Footer -->
 </main>
+
+<!-- Chatbot HTML -->
+<button id="chatToggle">Chat</button>
+<div id="chatContainer">
+  <div id="chatBox"></div>
+  <div id="chatInputContainer">
+    <input type="text" id="chatInput" placeholder="Type your message..." />
+    <button id="chatSendBtn">Send</button>
+  </div>
+</div>
+
+<script>
+const chatToggle = document.getElementById("chatToggle");
+const chatContainer = document.getElementById("chatContainer");
+const chatBox = document.getElementById("chatBox");
+const chatInput = document.getElementById("chatInput");
+const chatSendBtn = document.getElementById("chatSendBtn");
+
+chatToggle.addEventListener("click", () => {
+  chatContainer.style.display = chatContainer.style.display === "flex" ? "none" : "flex";
+  chatContainer.style.flexDirection = "column";
+});
+
+// Send message function
+async function sendMessage() {
+  const message = chatInput.value;
+  if(!message) return;
+
+  chatBox.innerHTML += `<p><b>You:</b> ${message}</p>`;
+  chatInput.value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  try {
+    const res = await fetch("http://127.0.0.1:8000/chat", {  // Replace with your deployed backend URL on Render/Netlify
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({message})
+    });
+    const data = await res.json();
+    chatBox.innerHTML += `<p><b>Bot:</b> ${data.reply}</p>`;
+  } catch(err) {
+    chatBox.innerHTML += `<p><b>Bot:</b> Error connecting to backend.</p>`;
+  }
+
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+chatSendBtn.addEventListener("click", sendMessage);
+chatInput.addEventListener("keypress", (e) => {
+  if(e.key === "Enter") sendMessage();
+});
+</script>
+
 </body>
 </html>
-
